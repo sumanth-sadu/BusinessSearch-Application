@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:id="@+id/reviewDesign"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/user_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="6dp"
+            android:text="TextView"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/user_review"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_below="@+id/user_rating"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:scrollHorizontally="true"
+            android:text="TextView"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/user_date"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:layout_below="@+id/user_review"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="6dp"
+            android:text="TextView"
+            android:textColor="@color/black" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+<!--    android:breakStrategy="simple"-->

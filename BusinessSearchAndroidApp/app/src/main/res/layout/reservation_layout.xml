@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/reserveBusinessName"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textColor="@color/buttons"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/reserve_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserveBusinessName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:text="Email"
+        android:textSize="15sp"
+        android:textColor="@color/buttons"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/reserve_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserve_email_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:text="Date"
+        android:textSize="15sp"
+        android:textColor="@color/buttons"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/reserve_email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserve_email"
+        android:hint="Email Id"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/reserve_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserve_date"
+        android:hint="mm-dd-yyyy"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/reserve_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserve_date_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:text="Start Time"
+        android:textSize="15sp"
+        android:textColor="@color/buttons"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/reserve_time_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reserve_time"
+        android:layout_alignParentStart="true"
+        android:hint="hh:mm"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+</RelativeLayout>
