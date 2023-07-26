@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mywebsite</title>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+</head>
+<body id="body">
+    
+    <div class="container">
+        <div class="image">
+            <img src="../static/img/banner.jpeg" alt="city-bg">
+            <div class="heading">
+                <h2>Business Search</h2>
+                <p>Fill out the form to get business near you!</p>
+            </div>
+        </div>
+
+        <div class = "form-details">
+            <form id="form">
+                <div class= "details">
+                    <label for="kword">Keyword</label><span class = "required">*</span>
+                    <input type="text" id="kword" name="keyword" required/>
+                </div>
+        
+                <div class="horizontal">
+                    <div class="distance">
+                        <label for="dist">Distance(miles)</label>
+                        <input type="number" id="dist" min="1" max="24" name="distance" value="10"/>
+                    </div>
+                    <div class="category">
+                        <label for="cat">Category</label><span class = "required">*</span>
+                        <select id="cat" name="category" required>
+                            <option value="default">Default</option>
+                            <option value="arts">Arts & Entertainment</option>
+                            <option value="health">Health & Medical</option>
+                            <option value="hotel">Hotels & Travel</option>
+                            <option value="food">Food</option>
+                            <option value="services">Professional Services</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="details">
+                    <label for="loc">Location</label><span class = "required">*</span>
+                    <input type="text" id="loc" name="location" required/>
+                </div>
+                
+                <hr>
+                
+                <div class="auto-detect">
+                    <p>Want us to auto-detect your location?
+                        <label for="check">Check here</label>
+                        <input type="checkbox" id="check" name="checkbox" onclick = enableDisableLocation(this)>
+                    </p>
+                </div>
+
+                <button class = "form-buttons" id = "form_submit" type = "button" onclick="validate()">SUBMIT</button>
+                <span id = "button-span"><input class = "form-buttons" id = "form_submit" type="reset" value="CLEAR"/></span> 
+                          
+            </form>
+        </div>
+    </div>
+
+    <div id="table_div">
+
+    </div>
+
+
+    <div id="infocard_div">
+
+    </div>
+
+    <script src = "../static/js/app.js" charset="utf-8"></script>
+</body>
+</html>
