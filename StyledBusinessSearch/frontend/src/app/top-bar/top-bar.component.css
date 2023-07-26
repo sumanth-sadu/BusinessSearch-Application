@@ -1,0 +1,33 @@
+
+
+.active {
+    border-color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.nav-item {
+    text-align: right;
+    
+    /* align-items: flex-end;
+    align-self: flex-end;
+    align-content: flex-end; */
+} 
+
+.toolbar{
+    display:flex;
+    justify-content: end;
+}
+
+.nav-link{
+    color: Black !important;
+}
+
+.mx-2 {
+    margin-right: 0 !important; 
+    margin-left: 0 !important;
+}
+/* navbar-expand-md{
+    display:flex;
+    justify-content: flex-end;
+} */

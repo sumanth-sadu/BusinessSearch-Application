@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "csci 571 course assignment 8 backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "business",
+    "search"
+  ],
+  "author": "sumanth sadu",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-async-await": "^1.1.0"
+  }
+}

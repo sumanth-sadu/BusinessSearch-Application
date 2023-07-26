@@ -1,0 +1,22 @@
+/* table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  } */
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    border: none;
+  }
+
+  .table{
+    background-color: white;
+    border-radius: 10px;
+    border-collapse: collapse;
+    /* border : 1px solid #dbdadb;
+    background-color: white; */
+    /* width: 700px; */
+    /* height: 470px; */
+}

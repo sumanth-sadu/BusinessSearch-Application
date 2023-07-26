@@ -1,0 +1,32 @@
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+        <table id="business-table" class="table table-striped" *ngIf="business_list">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Business Name</th>
+                    <th>Rating</th>
+                    <th>Distance (miles)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let business of business_list; let i = index" (click)="infoCard(business.id)">
+                    <td *ngIf="i<10">{{i + 1}}</td>
+                    <td *ngIf="i<10"><img src='{{business.image_url}}'></td>
+                    <td *ngIf="i<10">{{business.name}}</td>
+                    <td *ngIf="i<10">{{business.rating}}</td>
+                    <td *ngIf="i<10">{{(business.distance/1609.344) | number : '1.0-0'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+<div *ngIf="!business_list" class="row justify-content-center" style="background-color: white !important; border-radius: 10px;">
+    <p class="col-sm-4">no records found</p>
+</div>

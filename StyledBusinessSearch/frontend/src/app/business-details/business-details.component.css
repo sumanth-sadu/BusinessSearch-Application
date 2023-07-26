@@ -1,0 +1,102 @@
+.container{
+    background-color: white;
+    text-align: center;
+    width : 90%;
+    /* height : 800px; */
+    height : auto;
+    border-radius: 10px;
+    padding : 10px;
+    max-width: 900px;
+}
+
+/* .btn-primary {
+    margin-right: 5px;
+    background-color: #C2464D;
+    margin-top: 20px;
+    text-align: center;
+    outline: none;
+} */
+
+#modal_submit{
+    margin-right: 5px;
+    background-color: #C2464D;
+    margin-top: 20px;
+    text-align: center;
+    outline: none;
+}
+
+#reserve{
+    margin-right: 5px;
+    background-color: #C2464D;
+    margin-top: 20px;
+    text-align: center;
+    outline: none;
+}
+
+#cancel{
+    margin-right: 5px;
+    background-color: #356CE1;
+    margin-top: 20px;
+    text-align: center;
+    outline: none;
+}
+
+.error {
+
+    border: 1px solid red;
+
+}
+/* reserve_modal_button */
+/* .pics{
+    width : 40%;
+    height : 400%;
+} */
+
+#carouselExampleControls{
+    /* width : 50%; */
+    height : 320px;
+    text-align: center;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    filter: invert(100%);
+}
+
+/* .mat-tab-header{
+    background-color: yellow !important;
+} */
+
+::ng-deep.mat-tab-header {
+  background-color: #FCE500;
+  font-weight: 700;
+  color: black;
+  opacity: 1;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+
+/* ::ng-deep .modal-dialog.modalOpened {
+    .mat-tab-body-active {
+        z-index: auto !important;
+    }
+} */
+
+/* .modal-dialog{
+    z-index: 1;
+} */
+
+/* ::ng-deep.mat-tab-body.mat-tab-body-active {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1 !important;
+    flex-grow: 1;
+}
+
+
+.fade{
+    z-index: 9999 !important;
+} */

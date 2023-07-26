@@ -1,0 +1,595 @@
+<div class="container">
+    <a (click)="goToTable()" style="display:flex; color: black">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+        </svg>
+    </a>
+    <h3>{{this.name}}</h3>
+    <mat-tab-group mat-align-tabs="center">
+
+        <mat-tab label="Business Details">
+            <div class="row mt-5">
+                <div class="col-sm-6">
+                    <h4 *ngIf="address_boolean">Address</h4>
+                 
+                    <p>{{this.address}}</p>
+                    <h4 *ngIf="phone_boolean">Phone</h4>
+                    <p>{{this.phone}}</p>
+                    <h4 *ngIf="status_boolean">Status</h4>
+                    <p *ngIf="open" style="color:green">{{this.status}}</p>
+                    <p *ngIf="!open" style="color:red">{{this.status}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <h4 *ngIf="category_boolean">Category</h4>
+                    <p>{{this.category}}</p>
+                    <h4 *ngIf="price_range_boolean">Price range</h4>
+                    <p>{{this.price_range}}</p>
+                    <h4 *ngIf="url_boolean">Visit yelp for more</h4>
+                    <p><a href="{{this.url}}" target="_blank">Business link</a></p>
+                </div>
+            </div>
+
+
+            <div *ngIf="show">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    id="reserve">
+                    Reserve Now
+                </button>
+            </div>
+
+            <div *ngIf="!show">
+                <button type="button" class="btn btn-primary" id="cancel" (click)="cancel(this.business_id)">
+                    Cancel Reservation
+                </button>
+            </div>
+
+            <div class="social_icons mt-4 mb-3 justify-content-center" style="display: flex">
+                <p class="mt-2" style="margin-right:15px;">Share on: </p>
+                <a href="https://twitter.com/intent/tweet?text=check {{this.name}} on Yelp.&url={{this.url}}"
+                    target="_blank" style="margin-right:10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path
+                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{this.url}}" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{this.photos[0]}}" alt="pic1" width="300px" height="300px">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{this.photos[1]}}" alt="pic2" width="300px" height="300px">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{this.photos[2]}}" alt="pic3" width="300px" height="300px">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Map location">
+            <div class="my-google-map">
+                <google-map width="100%" [options]="mapOptions">
+                    <map-marker [position]="marker.position"></map-marker>
+                </google-map>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Reviews">
+            <table class="table table-striped" style="width:100%">
+                <tbody>
+                    <tr *ngFor="let review of reviews; let i = index">
+                        <td class="text-start">
+                            <p><b>{{review.user.name}}</b></p>
+                            <p>Rating: {{review.rating}}/5</p>
+                            <br>
+                            <p>{{review.text}}</p>
+                            <br>
+                            <p>{{review.time_created}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 10px;">
+                <h1 class="modal-title mb-1" id="exampleModalLabel">Reservation form</h1>
+            </div>
+            <div class="modal-body">
+                <div class="container mt-4">
+                  
+                    <form #reserveForm="ngForm" (ngSubmit)="reserveForm.form.valid && reservation(reserveForm.value, this.business_id)" class="needs-validation">
+                        <h2 class="text-center mb-0">{{this.name}}</h2>
+                        <div class="form-group ">
+                            <label for="email_field" class="col-form-label p-0">Email</label>
+                            <input type="email" [(ngModel)]="form.email" #mail="ngModel" email class="form-control" id="email_field"
+                                name="email" required [ngClass]="{error : mail.errors && mail.touched}"/>
+                            <div class="invalid-feedback">
+                             
+                               
+                            </div>
+                        </div> -->
+
+<!-- <div *ngIf="mail.errors && mail.invalid">
+                              
+                                        <div class="text-danger" *ngIf="mail.errors['required']">Email is required</div>
+
+                                        <div class="text-danger" *ngIf="mail.errors['email']">Email must be a valid email address</div>
+                            
+                        </div> -->
+
+
+
+
+
+<!-- <div class="form-group">
+                        <label for="date_field" class="col-form-label p-0">Date</label>
+                        <input type="date" ngModel #date="ngModel" class="form-control" id="date_field" name="date"
+                            required />
+                        <span *ngIf="date.invalid && date.touched" style="color: red;">Date is required</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="timehr_field" class="col-form-label p-0">Time</label>
+                                <div style="display:flex;">
+                                    <select ngModel name="timehr" class="form-control mr-2" id="timehr_field"
+                                        style="width: 40%;" required>
+                                        <option *ngFor="let key of counter(24); let i = index" [value]="i+1">{{i+1}}
+                                        </option>
+                                    </select>
+
+                                    <h1 class="mb-0"> : </h1>
+
+                                    <select ngModel name="timemin" class="form-control" id="timemin_field"
+                                        style="width: 40%" required>
+                                        <option *ngFor="let key of ['00','15','30','45']; let i = index" [value]="key">
+                                            {{key}}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            id="modal_submit">Submit</button>
+                    </div> -->
+
+<!--                     
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    style="color:white; background-color: black;">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 10px;">
+                <h1 class="modal-title mb-1" id="exampleModalLabel">Reservation form</h1>
+            </div>
+            <div class="modal-body">
+                <!-- <form #reserveForm="ngForm" (ngSubmit)="onSubmit(reserveForm, this.business_id)"
+                    class="needs-validation">
+                    <h2 class="text-center mb-0">{{this.name}}</h2>
+                    <div class="form-group">
+                        <label for="email_field" class="col-form-label p-0">Email</label>
+                        <input type="email" ngModel #mail="ngModel" email class="form-control" id="email_field"
+                            name="email" required [ngClass]="{'is-invalid': reservesubmit}"/>
+                        <div *ngIf="mail.errors && mail.invalid" class="invalid-feedback">
+                            <small class="text-danger" *ngIf="mail.errors['required'] && mail.touched">Email is
+                                required</small>
+                            <small class="text-danger" *ngIf="mail.errors['email']">Email must be a valid email
+                                address</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_field" class="col-form-label p-0">Date</label>
+                        <input type="date" ngModel #date="ngModel" class="form-control" id="date_field" name="date"
+                            required [ngClass]="{'is-invalid': reservesubmit}"/>
+                        <span *ngIf="date.invalid && date.touched" style="color: red;" class="invalid-feedback">Date is
+                            required</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="timehr_field" class="col-form-label p-0">Time</label>
+                                <div style="display:flex;">
+                                    <select ngModel name="timehr" class="form-control mr-2" id="timehr_field"
+                                        style="width: 40%;" required>
+                                        <option
+                                            *ngFor="let key of ['10','11','12','13','14','15','16','17']; let i = index"
+                                            [value]="i+1">{{i+1}}
+                                        </option>
+                                    </select>
+
+                                    <h1 class="mb-0"> : </h1>
+
+                                    <select ngModel name="timemin" class="form-control" id="timemin_field"
+                                        style="width: 40%" required>
+                                        <option *ngFor="let key of ['00','15','30','45']; let i = index" [value]="key">
+                                            {{key}}</option>
+                                    </select>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-clock align-bottom" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                        <path
+                                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                    </svg>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            id="modal_submit">Submit</button>
+                    </div>
+                </form> -->
+
+<!-- 
+                <form [formGroup]="userForm" (ngSubmit)="addNewuser(userForm)">
+                    <div class="modal-body mx-3">
+                      <div class="md-form mb-5">
+                        <div class="form-group">
+                          <label for="name" class=" font-weight-bold self-contrl-lbl">
+                            <i class="fa fa-user adjust-icon"></i>Name
+                          </label>
+                          <input type="text" id="inputName" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid':submitted && f.name.errors }" id="newAttributeName"
+                            [(ngModel)]="newAttribute.name" name="newAttributeName" id="name" ngModel name="name" />
+                          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required"> Name is required</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="md-form mb-5">
+                        <div class="form-group">
+                          <label for="Email" class="self-contrl-lbl font-weight-bold">
+                            <i class="fa fa-envelope adjust-icon"></i> Email id
+                          </label>
+                          <input type="text" id="inputEmail" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="newAttributeEmail"
+                            [(ngModel)]="newAttribute.email" name="newAttributeEmail" id="email" />
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form> -->
+        
+
+               <h2 class="text-center mb-0">{{this.name}}</h2>
+                <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(this.business_id)">
+                    
+                    <div class="form-group">
+                        <label for="email_field" class="col-form-label p-0">Email</label>
+                        <input formControlName="email" type="email" class="form-control" id="email_field" name="email" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.email.errors && reserveFormControls.email.touched}"/>
+                        <!-- {{reservesubmit}} -->
+                        <!-- <div *ngIf="reservesubmit && reserveFormControls.email.errors"> -->
+                        <div *ngIf="reserveFormControls.email.touched && reserveFormControls.email.invalid">
+                            <div *ngIf="reserveFormControls.email.errors.required" class="text-danger">Email is required</div>
+                            <div *ngIf="reserveFormControls.email.errors.pattern" class="text-danger">Email must be a valid email address</div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_field" class="col-form-label p-0">Date</label>
+                        <input formControlName="date" type="date" class="form-control" id="date_field" name="date" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.date.errors && reserveFormControls.date.touched}"/>
+                        <!-- <div *ngIf="reservesubmit && reserveFormControls.date.errors">  -->
+                            <div *ngIf="reserveFormControls.date.touched && reserveFormControls.date.invalid"> 
+                            <div *ngIf="reserveFormControls.date.errors.required" class="text-danger">Date is required</div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="timehr_field" class="col-form-label p-0">Time</label>
+                        <div class="row g-0">
+                            <div style="display:flex;">
+                                <div style="width:20%">
+                                    
+                                    <select formControlName="time_hr" name="timehr" class="form-control" id="timehr_field" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.time_hr.errors && reserveFormControls.time_hr.touched}">
+                                        <!-- style="width: 40%;" -->
+                                        <option *ngFor="let key of ['10','11','12','13','14','15','16','17']; let i = index" [value]="i+1">{{key}}
+                                        </option>
+                                    </select>
+                                 
+
+                                </div>
+
+                                <h1 style="margin-left:10px;"> : </h1>
+
+                                <div style="width:20%">
+                                    <select formControlName="time_min" name="timemin" class="form-control" id="timemin_field" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.time_min.errors && reserveFormControls.time_min.touched}">
+                                        <!-- style="width: 40%"  -->
+                                        <option *ngFor="let key of ['00','15','30','45']; let i = index" [value]="key">
+                                            {{key}}</option>
+                                    </select>
+                            
+                                </div>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-clock" viewBox="0 0 16 16" style="margin-top:10px; margin-left:5px;">
+                                    <path
+                                        d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                    <path
+                                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+
+<!-- 
+                        <label for="date_field" class="col-form-label p-0">Date</label>
+                        <input formControlName="date" type="date" class="form-control" id="date_field" name="date" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.date.errors}"/>
+                        <div *ngIf="reservesubmit && reserveFormControls.date.errors"> 
+                            <div *ngIf="reserveFormControls.date.errors.required && reserveFormControls.date.touched && reserveFormControls.date.invalid" class="text-danger">Date is required</div>
+                            {{reserveFormControls.date.invalid}}
+                        </div>
+                    </div> -->
+
+
+
+<!-- 
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="timehr_field" class="col-form-label p-0">Time</label>
+                                <div style="display:flex;">
+                                    <select formControlName="time_hr" name="timehr" class="form-control mr-2" id="timehr_field"
+                                        style="width: 40%;" required>
+                                        <option *ngFor="let key of ['10','11','12','13','14','15','16','17']; let i = index" [value]="i+1">{{i+1}}
+                                        </option>
+                                    </select>
+
+                                    <h1 class="mb-0"> : </h1>
+
+                                    <select formControlName="time_min" name="timemin" class="form-control" id="timemin_field"
+                                        style="width: 40%" required>
+                                        <option *ngFor="let key of ['00','15','30','45']; let i = index" [value]="key">
+                                            {{key}}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary" 
+                            id="modal_submit">Submit</button>
+                    </div>
+                </form>
+
+
+                <!-- <form [formGroup]="userEmails" >
+
+                    <h3>Please provide your email addresses</h3>
+                
+                    <div class="form-group">
+                      <label>Primary Email:</label>
+                      <input [class.is-invalid]="primEmail!.invalid && primEmail!.touched" type="email" class="form-control"
+                        formControlName="primaryEmail" />
+                
+                      <div *ngIf="(primEmail!.invalid && primEmail!.errors!['email'] && primEmail!.touched) || primEmail!.dirty">
+                        <small *ngIf="primEmail!.errors!['required']" class="text-danger">Primary email is required</small>
+                        <small *ngIf="primEmail!.errors!['email']" class="text-danger">Please provide a valid email address</small>
+                      </div> -->
+
+                      <!-- <label for="email_field" class="col-form-label p-0">Email</label>
+                      <input formControlName="email" type="email" class="form-control" id="email_field" name="email" [ngClass]="{'is-invalid': reservesubmit && reserveFormControls.email.errors}"/>
+                      <div *ngIf="reservesubmit && reserveFormControls.email.errors" class="invalid-feedback">
+                          <div *ngIf="reserveFormControls.email.errors.required">Email is required</div>
+                          <div *ngIf="reserveFormControls.email.errors.email">Email must be a valid email address</div>
+                      </div> -->
+                
+                    <!-- </div>
+
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary" (click)="closePopup()"
+                            id="modal_submit">Submit</button>
+                    </div>
+                
+                  </form> -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="rclose"
+                    style="color:white; background-color: black;">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div>
+    <button type="button" class="btn btn-secondary">twitter</button>
+</div>
+<div>
+    <button type="button" class="btn btn-primary" (click)="openPopup()">Reserve Now</button>
+
+    <div class="modal" tabindex="-1" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{this.name}}</h5>
+                </div>
+                <div class="modal-body">
+                    <form #reserveForm="ngForm" (submit)="reservation(reserveForm.value)">
+                        <div class="form-group">
+                            <label for="email_field" class="col-form-label">Email</label>
+                            <input type="email" ngModel class="form-control" id="email_field" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="date_field" class="col-form-label">Date</label>
+                            <input type="date" ngModel class="form-control" id="date_field" name="date" />
+                        </div>
+                        <div class="form-group">
+                            <label for="time_field" class="col-form-label">Time</label>
+                            <input type="time" ngModel class="form-control" id="time_field" name="time" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="closePopup()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-item active">
+            <img class="pics" src="https://s3-media2.fl.yelpcdn.com/bphoto/1UO-sVazfi8nPzIjmI3gMw/o.jpg"
+                alt="pic1" width="300px" height="300px">
+        </div>
+        <div class="carousel-item">
+            <img class="pics" src="https://s3-media2.fl.yelpcdn.com/bphoto/TT_UovamZ8KAU2FfYOn2Uw/o.jpg"
+                alt="pic2" width="300px" height="300px">
+        </div>
+        <div class="carousel-item">
+            <img class="pics" src="https://s3-media3.fl.yelpcdn.com/bphoto/JQFfT7Bc9sgPk50BmmqSTg/o.jpg"
+                alt="pic3" width="300px" height="300px">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <form>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="openPopup()">
+            Launch demo modal
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closePopup()">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<br><br><br><br> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+<mdb-tabs [fill]="true">
+    <mdb-tab title="Tab 1">Tab content 1</mdb-tab>
+    <mdb-tab title="Tab 2">Tab content 2</mdb-tab>
+    <mdb-tab title="Tab 3">Tab content 3</mdb-tab>
+  </mdb-tabs>
+</div> -->

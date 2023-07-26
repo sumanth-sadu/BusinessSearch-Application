@@ -1,0 +1,35 @@
+.btn-submit {
+    margin-right: 5px;
+    /* color: red; */
+    background-color: #C2464D;
+    margin-right : 20px;
+}
+
+.btn-clear {
+    margin-right: 5px;
+    /* color: red; */
+    background-color: #356CE1;
+}
+
+.required{
+    color: red;
+}
+
+.container{
+    border-radius: 10px;
+    border : 1px solid #dbdadb;
+    background-color: white;
+    margin-bottom: 50px;
+    /* width : 50%; */
+    /* width: auto; */
+    /* width: 700px; */
+    /* height: 470px; */
+}
+
+.checkb {
+    margin-right: 10px !important;
+}
+
+select{
+    appearance: listbox !important
+}
